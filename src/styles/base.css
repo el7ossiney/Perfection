@@ -1,0 +1,271 @@
+/* ==========================================================
+   Base — reset, shared primitives, chrome
+   ========================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* no scroll-behavior:smooth — anchors go through ScrollToPlugin
+     so they stay correct next to pin spacers */
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--violet-deep);
+  color: var(--ink);
+  direction: rtl;
+  line-height: 1.9;
+  font-size: var(--text-md);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.55;
+  font-weight: 700;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+::selection {
+  background: var(--violet);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container {
+  width: min(var(--container), 100% - 3rem);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-pad);
+}
+
+/* ---- eyebrow ---- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--violet);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.eyebrow--light {
+  color: var(--sky);
+}
+
+.sec-head {
+  max-width: 720px;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.sec-head__title {
+  font-size: var(--title-md);
+  font-weight: 700;
+}
+
+.sec-head__lead {
+  margin-top: 1rem;
+  font-size: var(--text-lead);
+  color: var(--ink-mute);
+  max-width: 56ch;
+}
+
+/* ---- buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-pill);
+  padding: 0.9rem 1.9rem;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background var(--dur-fast),
+    box-shadow var(--dur-fast);
+}
+
+/* على الخلفيات الداكنة: زجاج */
+.btn--glass {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.btn--glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* على الخلفيات الفاتحة: أبيض صلب */
+.btn--pill {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+.btn--pill:hover {
+  transform: translateY(-1px);
+}
+
+.btn--violet {
+  background: var(--violet);
+  color: #fff;
+}
+
+.btn--violet:hover {
+  background: var(--violet-deep);
+  transform: translateY(-1px);
+}
+
+/* ---- glass panel (الدليل: البطاقات الزجاجية) ---- */
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-card);
+}
+
+.glass--light {
+  background: var(--glass-light);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+/* ---- marquee (shared) ---- */
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+.ticker {
+  overflow: hidden;
+  border-block: 1px solid var(--hairline-light);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ticker__row {
+  display: flex;
+  width: max-content;
+  animation: marquee-rtl var(--ticker-dur, 26s) linear infinite;
+}
+
+.ticker__seq {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2.8rem;
+  padding-inline-start: 2.8rem;
+}
+
+.ticker__item {
+  white-space: nowrap;
+}
+
+/* ---- grain ---- */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- SplitWords shared ---- */
+.sw__line {
+  display: block;
+}
+
+.sw__w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* room for Arabic ascenders/marks without layout shift */
+  padding-block: 0.14em;
+  margin-block: -0.14em;
+}
+
+.sw__i {
+  display: inline-block;
+}
+
+/* ---- misc ---- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ---- reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .ticker__row {
+    animation: none;
+  }
+
+  .btn,
+  .btn--glass,
+  .btn--pill,
+  .btn--violet {
+    transition: none;
+  }
+}

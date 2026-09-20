@@ -1,0 +1,165 @@
+/* ===================== SERVICES — البروفايل =====================
+   خلفية لافندر متدرجة (قالب السوشيال في الدليل) + بطاقة بروفايل زجاجية
+   ================================================================ */
+
+.svc {
+  background: var(--grad-lavender);
+}
+
+/* رأس البروفايل */
+.profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  border-radius: var(--radius-panel);
+  background: var(--glass-light);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--shadow-card);
+  margin-bottom: 3rem;
+}
+
+.profile__avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--grad-violet-rich);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-card);
+}
+
+.profile__id {
+  flex: 1;
+  min-width: 260px;
+}
+
+.profile__handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-latin);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+}
+
+.profile__name {
+  font-size: var(--title-sm);
+  margin-top: 0.25rem;
+  color: var(--ink);
+}
+
+.profile__bio {
+  color: var(--ink-mute);
+  margin-top: 0.5rem;
+  max-width: 48ch;
+}
+
+.profile__stats {
+  display: flex;
+  gap: 2.4rem;
+  align-self: center;
+  flex-wrap: wrap;
+}
+
+.profile__stats li {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__stat-v {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+.profile__stat-l {
+  font-size: var(--text-xs);
+  color: var(--ink-faint);
+}
+
+/* قائمة الروابط — صفوف زجاجية فاتحة */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.links__a {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.25rem 1.6rem;
+  border-radius: var(--radius-card);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--shadow-card);
+  transition:
+    background var(--dur-fast),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.links__a:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.links__num {
+  font-family: var(--font-latin);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--violet);
+  width: 2.4rem;
+  flex-shrink: 0;
+}
+
+.links__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.links__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ink);
+  transition: color var(--dur-fast);
+}
+
+.links__desc {
+  color: var(--ink-mute);
+  font-size: var(--text-sm);
+}
+
+.links__arrow {
+  width: 22px;
+  height: 22px;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    color var(--dur-fast);
+}
+
+.links__a:hover .links__title {
+  color: var(--violet);
+}
+
+.links__a:hover .links__arrow {
+  transform: translateX(-5px);
+  color: var(--violet);
+}

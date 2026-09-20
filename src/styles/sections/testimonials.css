@@ -1,0 +1,103 @@
+/* ===================== TESTIMONIALS — التعليقات =====================
+   قالب التعليق من الدليل: أبيض بلمسات لافندر
+   ================================================================ */
+
+.tst {
+  background: linear-gradient(180deg, var(--lavender-soft) 0%, #fdfbff 100%);
+}
+
+.comments {
+  max-width: 46rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.comment {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-card);
+  padding: 1.5rem 1.7rem;
+  box-shadow: var(--shadow-card);
+}
+
+.comment__head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.comment__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  background: var(--grad-violet-rich);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* لكل معلّق تدرجه — ناس مختلفين مش نسخ */
+.comment:nth-child(2) .comment__avatar {
+  background: var(--grad-cyan-navy);
+}
+
+.comment:nth-child(3) .comment__avatar {
+  background: var(--violet-bright);
+}
+
+.comment__who {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment__name {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.comment__role {
+  font-size: var(--text-xs);
+  color: var(--ink-faint);
+}
+
+.comment__time {
+  margin-inline-start: auto;
+  font-size: var(--text-xs);
+  color: var(--ink-faint);
+}
+
+.comment__text {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--ink);
+}
+
+.comment__foot {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--hairline);
+  color: var(--ink-faint);
+  font-size: var(--text-sm);
+}
+
+.comment__heart {
+  width: 17px;
+  height: 17px;
+}
+
+.comment__foot span {
+  font-family: var(--font-display);
+  font-weight: 600;
+}

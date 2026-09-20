@@ -1,0 +1,192 @@
+/* ===================== HERO — البث =====================
+   قالب الإعلان الرقمي من الدليل: خلفية تدرج بنفسجي/نيفي 45°،
+   إطار hairline بهوامش 20px مع علامات قص، بطاقة العدّ زجاجية.
+   ======================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 6.5rem;
+  background: var(--grad-violet-rich);
+  color: var(--on-dark);
+}
+
+/* الإطار الداخلي — إطار الوثيقة من الدليل */
+.hero__frame {
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* علامات القص في الزوايا */
+.hero__frame::before,
+.hero__frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+}
+
+.hero__frame::before {
+  top: -1px;
+  inset-inline-start: -1px;
+  border-top: 2px solid rgba(255, 255, 255, 0.55);
+  border-inline-start: 2px solid rgba(255, 255, 255, 0.55);
+}
+
+.hero__frame::after {
+  bottom: -1px;
+  inset-inline-end: -1px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+  border-inline-end: 2px solid rgba(255, 255, 255, 0.55);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem 2.5rem;
+}
+
+/* بطاقة العد الحي — زجاج */
+.hero__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-inline-start: auto;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.hero__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan-bright);
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.hero__live-tag {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--on-dark-mute);
+}
+
+.hero__live-caption {
+  font-size: var(--text-xs);
+  color: var(--on-dark-faint);
+}
+
+/* odometer */
+.odo {
+  display: inline-flex;
+  direction: ltr;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.odo__col {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.odo__strip {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.odo__d {
+  display: block;
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+}
+
+.odo__sep {
+  display: inline-block;
+  height: 1em;
+  line-height: 1;
+}
+
+/* الكلمة */
+.hero__stage {
+  margin-top: auto;
+  padding-block: 2.5rem 1rem;
+}
+
+.hero__wordmark {
+  font-size: var(--wordmark);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #fff;
+  text-shadow: 0 24px 60px rgba(18, 8, 63, 0.45);
+}
+
+.hero__tagline {
+  margin-top: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+  color: var(--sky);
+}
+
+.hero__sub {
+  margin-top: 1.2rem;
+  max-width: 52ch;
+  color: var(--on-dark-mute);
+  font-size: var(--text-lead);
+}
+
+/* شريط المنصات — زجاج فوق التدرج */
+.hero__ticker .ticker__item {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--on-dark-mute);
+  padding-block: 0.9rem;
+  white-space: nowrap;
+}
+
+.hero__ticker {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .hero__frame {
+    inset: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__dot {
+    animation: none;
+  }
+}

@@ -1,0 +1,109 @@
+/* ===================== NAVBAR =====================
+   شفاف فوق الهيرو الداكن، وعند السكرول: زجاج بنفسجي داكن
+   ================================================== */
+
+.nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 70;
+  padding-block: 0.9rem;
+  transition:
+    background var(--dur-fast),
+    box-shadow var(--dur-fast);
+}
+
+.nav--scrolled {
+  background: rgba(34, 10, 104, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--hairline-light);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav__links {
+  display: flex;
+  gap: 1.8rem;
+  margin-inline-start: auto;
+}
+
+.nav__links a {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--on-dark-mute);
+  transition: color var(--dur-fast);
+}
+
+.nav__links a:hover {
+  color: #fff;
+}
+
+.nav__cta {
+  padding: 0.65rem 1.4rem;
+  font-size: var(--text-sm);
+}
+
+.nav__burger {
+  display: none;
+  margin-inline-start: auto;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0.7rem;
+}
+
+.nav__burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.nav__burger.is-open span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.nav__burger.is-open span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.nav__drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s var(--ease-out);
+}
+
+.nav__drawer.is-open {
+  max-height: 70vh;
+}
+
+.nav__drawer-links {
+  display: flex;
+  flex-direction: column;
+  padding-block: 0.6rem 1.2rem;
+}
+
+.nav__drawer-links a {
+  padding-block: 0.9rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+  border-bottom: 1px solid var(--hairline-light);
+}
+
+@media (max-width: 900px) {
+  .nav__links,
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__burger {
+    display: inline-flex;
+  }
+}
