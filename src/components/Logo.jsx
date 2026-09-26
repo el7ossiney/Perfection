@@ -6,7 +6,11 @@ export default function Logo() {
 
   return (
     <a className="brand" aria-label="perfection — home" {...link("/")}>
-      <img className="brand-logo" src="/logo.png" alt="Perfection logo" />
+      <img
+        className="brand-logo"
+        src={`${import.meta.env.BASE_URL}logo.png`}
+        alt="Perfection logo"
+      />
       <span className="brand-word">perfection</span>
     </a>
   );

@@ -42,8 +42,23 @@ src/
   pages/        Home, About, Services, Process, Contact
   data/         content.js — all copy, verbatim from "Website Content.pdf"
   lib/          navigation.js — HashRouter links, anchors, titles
-  styles.css    the whole design system (from ui/styles.css)
+  styles/       split of ui/styles.css — site.css manifest imports in order
 ```
 
-Content edits go in `src/data/content.js`; visual edits in `src/styles.css`
+Content edits go in `src/data/content.js`; visual edits in `src/styles/*`
 (and mirror them in `ui/styles.css` to keep the mockup in sync).
+
+## Deploying to GitHub Pages
+
+The GitHub repo (`el7ossiney/Perfection`) serves Pages from **master = the
+built site**, while the full source lives on the **`source`** branch.
+
+```bash
+npm run build
+# copy dist/ contents to the repo root as a commit on master, e.g.:
+git worktree add ../deploy origin/master
+cd ../deploy && rm -rf $(ls -A | grep -v .git) && cp -r ../front/dist/. . \
+  && git add -A && git commit -m "Deploy: …" && git push origin HEAD:master
+cd ../front && git worktree remove ../deploy
+git push origin master:source   # keep the source branch up to date
+```

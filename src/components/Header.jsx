@@ -49,7 +49,11 @@ export default function Header() {
 
           {/* Brand lockup pinned at the bottom of the mobile drawer */}
           <a className="drawer-brand" aria-label="perfection — home" {...link("/")}>
-            <img className="brand-logo" src="/logo.png" alt="Perfection logo" />
+            <img
+              className="brand-logo"
+              src={`${import.meta.env.BASE_URL}logo.png`}
+              alt="Perfection logo"
+            />
             <span className="brand-word">perfection</span>
           </a>
         </nav>
