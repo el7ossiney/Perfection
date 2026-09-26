@@ -1,4 +1,4 @@
-/* ===================== PROCESS — على تدرج سماوي فاتح ===================== */
+/* ===================== HOW WE WORK ===================== */
 
 .proc {
   background: var(--grad-sky);
@@ -11,7 +11,7 @@
   gap: 2rem;
 }
 
-/* الخط اللي بيرسمه السكرول */
+/* the scroll-drawn line */
 .proc__line {
   position: absolute;
   inset-block: 0;
@@ -26,7 +26,7 @@
   padding-inline-start: 1.8rem;
 }
 
-/* نقطة على الخط */
+/* marker dot on the line */
 .proc__step::before {
   content: "";
   position: absolute;
@@ -49,7 +49,7 @@
 
 .proc__num {
   font-family: var(--font-latin);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
   color: var(--ink-faint);
   transition: color var(--dur-med);
@@ -61,8 +61,8 @@
 
 .proc__title {
   margin-top: 0.5rem;
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--ink);
 }
 
@@ -70,6 +70,10 @@
   margin-top: 0.5rem;
   color: var(--ink-mute);
   font-size: var(--text-sm);
+}
+
+.proc__cta {
+  margin-top: 3rem;
 }
 
 @media (max-width: 900px) {

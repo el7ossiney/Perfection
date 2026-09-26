@@ -69,6 +69,40 @@
   color: var(--cyan-bright);
 }
 
+/* social icons */
+.foot__socials {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.foot__socials a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--hairline-light);
+  color: var(--on-dark);
+  opacity: 0.9;
+  transition:
+    background var(--dur-fast),
+    color var(--dur-fast),
+    opacity var(--dur-fast);
+}
+
+.foot__socials a:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--cyan-bright);
+  opacity: 1;
+}
+
+.foot__social-icon {
+  width: 20px;
+  height: 20px;
+}
+
 /* الووردمارك الشبح — استروك فقط */
 .foot__ghost {
   font-family: var(--font-display);

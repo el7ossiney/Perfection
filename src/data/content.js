@@ -1,223 +1,148 @@
 /**
- * المحتوى — كل الكوبي العربي في مكان واحد.
- * Voice: خليجي واثق، الجملة قصيرة، الرقم يقود الدعوى، صفر حشو.
+ * Website content — sourced verbatim from "Website Content.pdf".
+ * English-first (LTR). No invented claims: only what the document states.
  */
 
 export const site = {
-  name: "برفكشن",
-  latin: "perfection",
+  name: "Perfection",
+  handle: "@perfection.agency",
   email: "hello@perfection.agency",
-  phone: "+966 50 000 0000",
-  phoneIntl: "+966500000000",
-  whatsapp: "https://wa.me/966500000000",
-  city: "الرياض، السعودية",
+  phone: "+20 100 000 0000",
+  phoneIntl: "+201000000000",
+  whatsapp: "https://wa.me/201000000000",
+  location: "Egypt & GCC",
+  // TODO(user): official Linktree links pending — swap "#" for real URLs
+  socials: [
+    { label: "Instagram", href: "#" },
+    { label: "LinkedIn", href: "#" },
+    { label: "Facebook", href: "#" },
+    { label: "TikTok", href: "#" },
+    { label: "X", href: "#" },
+  ],
 };
 
 export const nav = [
-  { href: "#services", label: "الخدمات" },
-  { href: "#work", label: "أعمالنا" },
-  { href: "#process", label: "طريقتنا" },
-  { href: "#network", label: "الجمهور" },
-  { href: "#testimonials", label: "قالوا عنّا" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "How We Work" },
+  { href: "#brands", label: "Brands" },
 ];
 
-export const navCta = { href: "#contact", label: "ابدأ مشروعك" };
+export const navCta = { href: "#contact", label: "Contact Us" };
 
 export const hero = {
-  wordmark: "برفكشن",
-  tagline: "شراكة تُقاس بالأرقام، مو بالوعود.",
-  sub: "من الرياض لكل الخليج: نربط علامتك بمؤثرين يبيعون فعلًا، نبني محتوى يتشاركه الناس، ونرسل لك تقريرًا يثبت وين راح كل ريال.",
-  odometer: {
-    value: 48000000,
-    label: "انطباع شهريًا عبر شبكتنا",
-    liveLabel: "مباشر",
-    tick: [1, 40],
-  },
-  platforms: ["سناب شات", "تيك توك", "انستغرام", "يوتيوب", "إكس"],
+  badge: "Full-Service Marketing Agency",
+  wordmark: "Perfection",
+  heading: "We Build Brands That Get Seen, Trusted & Chosen.",
+  sub: "We help businesses build stronger brands, reach the right audience, and turn attention into real business growth.",
+  cta: { label: "Explore Our Services", href: "#services" },
+  platforms: ["TikTok", "Instagram", "Snapchat", "YouTube", "LinkedIn", "X"],
 };
 
-/** Services = صفحة بروفايل الوكالة نفسها */
+/** Who We Are — the agency's own profile card */
 export const profile = {
   handle: "@perfection",
   verified: true,
-  name: "برفكشن",
-  bio: "وكالة تسويق بالمؤثرين — من الاستراتيجية للتقرير النهائي، كل شيء تحت سقف واحد.",
-  stats: [
-    { value: 3500, suffix: "+", label: "شريك مؤثر" },
-    { value: 6, label: "دول خليجية" },
-    { value: 24, label: "مجالًا" },
-  ],
+  name: "Perfection",
+  bio: "Perfection is a full-service marketing agency helping brands grow through creativity, strategy, and performance. We create impactful marketing experiences that strengthen brands, engage audiences, and drive real business results.",
 };
 
+/** What We Do — icon key maps to ServiceIcon in Services.jsx */
 export const services = [
   {
-    num: "٠١",
-    title: "التسويق بالمؤثرين",
-    desc: "نوصّلك بالمؤثر اللي جمهوره يشتري: مطابقة دقيقة، تفاوض، وتقرير أثر واضح.",
+    icon: "brand",
+    title: "Branding & Identity",
+    desc: "Build a memorable brand through strategic positioning, logo design, visual identity systems, and guidelines that help you stand out and connect with your audience.",
   },
   {
-    num: "٠٢",
-    title: "إنتاج المحتوى",
-    desc: "محتوى يوقّف السكرول: أفكار، تصوير، ومونتاج بمعايير كل منصة.",
+    icon: "social",
+    title: "Social Media Management",
+    desc: "Grow your online presence through strategic content planning, creative management, audience engagement, and consistent communication across social media platforms.",
   },
   {
-    num: "٠٣",
-    title: "إدارة السوشيال",
-    desc: "حساباتك بأيدٍ متخصصة: تقويم محتوى، نشر، وردود تبيع وأنت نايم.",
+    icon: "chart",
+    title: "Performance Marketing",
+    desc: "Plan, launch, and optimize data-driven advertising campaigns that generate qualified leads, increase conversions, and maximize your marketing return on investment.",
   },
   {
-    num: "٠٤",
-    title: "الهوية البصرية",
-    desc: "هوية تتذكر من أول مرة: شعار، ألوان، ونظام بصري كامل يشتغل في كل مكان.",
+    icon: "camera",
+    title: "Content Creation & Production",
+    desc: "Create high-quality content through photography, videography, motion graphics, and creative campaigns designed to strengthen your brand presence.",
   },
   {
-    num: "٠٥",
-    title: "الأداء والإعلانات",
-    desc: "حملات مدفوعة بميزانية محسوبة — كل ريال يقاس، وكل قرار له رقم وراه.",
+    icon: "target",
+    title: "Advertising Management",
+    desc: "Manage and optimize targeted advertising campaigns that increase brand visibility, attract potential customers, and deliver measurable business results.",
   },
   {
-    num: "٠٦",
-    title: "الاستراتيجية والاستشارات",
-    desc: "جلسة تحليل وخطة واضحة، قبل ما تصرف ريال واحد في المكان الغلط.",
+    icon: "search",
+    title: "Search Engine Optimization (SEO)",
+    desc: "Improve your search rankings and attract valuable organic traffic through technical optimization, content strategy, and SEO best practices.",
+  },
+  {
+    icon: "film",
+    title: "Media Production & Motion Design",
+    desc: "Produce engaging videos, motion graphics, and visual experiences that communicate your message and create lasting audience impact.",
+  },
+  {
+    icon: "monitor",
+    title: "Website Design",
+    desc: "Design modern, user-friendly websites that enhance credibility, improve customer experience, and support business growth through better conversions.",
   },
 ];
 
-export const cases = [
-  {
-    handle: "@tajmeel.brand",
-    client: "براند تجميل",
-    year: "٢٠٢٥",
-    tags: ["تيك توك", "انستغرام", "UGC"],
-    tone: "violet",
-    metric: { prefix: "+", value: 380, suffix: "٪", label: "نمو المبيعات" },
-    caption:
-      "٤٠ مؤثرة في ٣ دول، ومحتوى واحد صار ترند — والمبيعات تضاعفت قبل نهاية الربع.",
-    kpis: [
-      { value: "١٢٫٤ مليون", label: "وصول" },
-      { value: "١١٠", label: "قطعة محتوى" },
-      { value: "٣", label: "دول" },
-    ],
-  },
-  {
-    handle: "@tawseel.app",
-    client: "تطبيق توصيل",
-    year: "٢٠٢٥",
-    tags: ["سناب شات", "يوتيوب"],
-    tone: "paper",
-    metric: { prefix: "", value: 18, suffix: " مليون", label: "مشاهدة عضوية" },
-    caption: "حملة وعي بميزانية محسوبة — والوعي صار تحميلات على المتجر.",
-    kpis: [
-      { value: "٢١٠ ألف", label: "تحميل" },
-      { value: "−٤١٪", label: "تكلفة الاستحواذ" },
-      { value: "٨٫١٪", label: "تفاعل" },
-    ],
-  },
-  {
-    handle: "@mataam.group",
-    client: "مجموعة مطاعم",
-    year: "٢٠٢٤",
-    tags: ["انستغرام", "تيك توك"],
-    tone: "ink",
-    metric: { prefix: "×", value: "٤٫٢", suffix: "", label: "مضاعفة التفاعل" },
-    caption: "سوشيال + محتوى يشهي — والجمهور صار يسأل عن الأكلة قبل القائمة.",
-    kpis: [
-      { value: "+٦٨٪", label: "متابعون جدد" },
-      { value: "٩٦", label: "قطعة محتوى" },
-      { value: "٥", label: "فروع" },
-    ],
-  },
-];
+export const serviceCta = "Explore Service";
+
+export const processSection = {
+  eyebrow: "How We Work",
+  title: "From Strategy to Measurable Growth",
+  lead: "Our process combines research, creativity, and performance-driven marketing to help businesses build stronger brands, attract customers, and achieve sustainable growth.",
+  cta: { label: "Let's Grow Your Brand", href: "#contact" },
+};
 
 export const processSteps = [
   {
-    num: "٠١",
-    title: "نحفر في البيانات",
-    desc: "نقرأ جمهورك ومنافسيك ومنصاتك، ونرجع بخريطة واضحة قبل أي خطوة.",
+    title: "Discovery",
+    desc: "We analyze your business, target audience, competitors, and market opportunities to create a strong foundation for branding and marketing success.",
   },
   {
-    num: "٠٢",
-    title: "نبني الخطة",
-    desc: "أهداف رقمية، مؤثرون مرشّحون بالأسماء، ومحتوى متوقّع الأثر.",
+    title: "Strategy",
+    desc: "We develop a customized marketing strategy, defining your positioning, messaging, content direction, and the right channels to achieve your goals.",
   },
   {
-    num: "٠٣",
-    title: "ننفّذ بذوق",
-    desc: "إنتاج ونشر وتفاعل، بإيقاع مخصص لكل منصة — مو قالب واحد للكل.",
+    title: "Execution",
+    desc: "We bring the strategy to life through creative design, content, and marketing campaigns. Every detail is aligned with your brand to ensure consistency, quality, and impact.",
   },
   {
-    num: "٠٤",
-    title: "نقيس ونضاعف",
-    desc: "تقرير شهري بالأرقام، وقرارات التكبير تُبنى عليه — مو على الحدس.",
+    title: "Optimization",
+    desc: "We track performance, analyze results, and continuously optimize campaigns to improve ROI, increase conversions, and support long-term growth.",
   },
 ];
 
-export const network = {
-  headline: "الجمهور عندنا، مو عند المنصات.",
-  lead: "قاعدة موثّقة عبر دول الخليج، مفهرسة بالمجال ونوع الجمهور ومعدل التفاعل — نوصّلك بالاسم اللي يبيع فعلًا.",
-  bigStat: { value: 3500, suffix: "+", label: "مؤثر موثّق" },
-  categories: [
-    { label: "موضة", share: 28 },
-    { label: "جمال", share: 22 },
-    { label: "رياضة", share: 16 },
-    { label: "تقنية", share: 12 },
-    { label: "طعام", share: 12 },
-    { label: "عائلة", share: 10 },
-  ],
-  countries: ["السعودية", "الإمارات", "الكويت", "قطر", "البحرين", "عُمان"],
-  stats: [
-    { value: 24, label: "مجال تخصص" },
-    { value: 97, suffix: "٪", label: "رضا العملاء" },
-    { value: 48, suffix: " مليون", label: "انطباع شهريًا" },
-  ],
+/** Brands That Trust Perfection — logos only, no testimonials (per the document) */
+export const brands = {
+  eyebrow: "Brands We've Worked With",
+  title: "Brands That Trust Perfection",
+  lead: "We're proud to collaborate with businesses across Egypt and the GCC, helping brands strengthen their presence, connect with their audiences, and achieve sustainable growth through strategic marketing and creative excellence.",
+  // TODO(user): replace placeholder slots with the official client logo files
+  logos: Array.from({ length: 10 }, (_, i) => `LOGO ${String(i + 1).padStart(2, "0")}`),
 };
 
-export const quotes = [
-  {
-    name: "ريم العتيبي",
-    role: "مديرة تسويق — براند تجميل",
-    text: "أول وكالة ترسلنا تقريرًا نفهمه. الأرقام كانت واضحة، والنتيجة أوضح.",
-    likes: "٢٤٠",
-    time: "من سنة",
-  },
-  {
-    name: "مريم القاسمي",
-    role: "مالكة — مجموعة مطاعم",
-    text: "سلّمناهم السوشيال ونسينا إننا كنا نتعب فيه. الطلب زاد بعد أول حملة.",
-    likes: "١٨٦",
-    time: "من ٨ أشهر",
-  },
-  {
-    name: "فهد الشمري",
-    role: "مؤسس — تطبيق توصيل",
-    text: "دخلت أطلب حملة مؤثرين، طلعت بخطة نمو كاملة. تكلفة الاستحواذ نزلت ٤١٪.",
-    likes: "٣٢١",
-    time: "من ٣ أشهر",
-  },
-];
-
 export const cta = {
-  line: "ودّك نبدأ؟ الرسالة عندنا.",
-  placeholder: "اكتب لنا وش تحتاج…",
-  buttonLabel: "أرسل",
-  whatsappLabel: "أو كلّمنا واتساب",
-  sessionLine:
-    "جلسة مجانية ٣٠ دقيقة — نسمعك ونحلل وضعك ونقترح خطة أولية، حتى لو ما اشتغلت معانا.",
+  title: "Ready to Grow Your Brand?",
+  lead: "Let's discuss your goals and create a strategy that drives real business growth.",
+  buttonLabel: "Contact Us",
+  placeholder: "Tell us about your brand…",
+  whatsappLabel: "Or message us on WhatsApp",
 };
 
 export const footer = {
-  blurb: "وكالة تسويق بالمؤثرين — نبني حضورًا رقميًا يُقاس أثره، من الرياض لكل الخليج.",
-  serviceCol: {
-    title: "الخدمات",
-    links: services.map((s) => s.title),
-  },
+  blurb: "Perfection — a full-service marketing agency helping brands across Egypt and the GCC grow through creativity, strategy, and performance.",
+  serviceCol: { title: "Services", links: services.map((s) => s.title) },
   companyCol: {
-    title: "الوكالة",
-    links: ["من نحن", "أعمالنا", "الجمهور", "المدونة", "الوظائف"],
+    title: "Agency",
+    links: ["About", "How We Work", "Brands", "Contact"],
   },
-  socialCol: {
-    title: "تابعنا",
-    links: ["انستغرام", "تيك توك", "سناب شات", "إكس", "لينكدإن"],
-  },
-  legal: "© ٢٠٢٦ برفكشن — جميع الحقوق محفوظة",
-  madeIn: "صُنع في الرياض",
+  socialCol: { title: "Follow Us" },
+  legal: "© 2026 Perfection — All rights reserved",
+  madeIn: "Egypt & GCC",
 };

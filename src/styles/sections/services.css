@@ -1,12 +1,13 @@
-/* ===================== SERVICES — البروفايل =====================
-   خلفية لافندر متدرجة (قالب السوشيال في الدليل) + بطاقة بروفايل زجاجية
-   ================================================================ */
+/* ===================== SERVICES =====================
+   Who We Are as a glass profile card on lavender,
+   then eight service rows — icons, unified Explore CTA.
+   ==================================================== */
 
 .svc {
   background: var(--grad-lavender);
 }
 
-/* رأس البروفايل */
+/* profile card */
 .profile {
   display: flex;
   align-items: flex-start;
@@ -19,7 +20,7 @@
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   box-shadow: var(--shadow-card);
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .profile__avatar {
@@ -28,8 +29,8 @@
   border-radius: 50%;
   background: var(--grad-violet-rich);
   color: #fff;
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-latin);
+  font-weight: 600;
   font-size: 2rem;
   display: grid;
   place-items: center;
@@ -39,7 +40,7 @@
 
 .profile__id {
   flex: 1;
-  min-width: 260px;
+  min-width: 280px;
 }
 
 .profile__handle {
@@ -47,7 +48,7 @@
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-latin);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.95rem;
   color: var(--ink-mute);
 }
@@ -61,34 +62,16 @@
 .profile__bio {
   color: var(--ink-mute);
   margin-top: 0.5rem;
-  max-width: 48ch;
+  max-width: 64ch;
 }
 
-.profile__stats {
-  display: flex;
-  gap: 2.4rem;
-  align-self: center;
-  flex-wrap: wrap;
-}
-
-.profile__stats li {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile__stat-v {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.5rem;
+/* the list */
+.links__heading {
+  font-size: var(--title-md);
   color: var(--ink);
+  margin-bottom: 1.8rem;
 }
 
-.profile__stat-l {
-  font-size: var(--text-xs);
-  color: var(--ink-faint);
-}
-
-/* قائمة الروابط — صفوف زجاجية فاتحة */
 .links {
   display: flex;
   flex-direction: column;
@@ -99,7 +82,7 @@
   display: flex;
   align-items: center;
   gap: 1.4rem;
-  padding: 1.25rem 1.6rem;
+  padding: 1.35rem 1.6rem;
   border-radius: var(--radius-card);
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.85);
@@ -116,13 +99,21 @@
   transform: translateY(-2px);
 }
 
-.links__num {
-  font-family: var(--font-latin);
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--violet);
-  width: 2.4rem;
+/* icon disc */
+.links__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
+  background: var(--violet-tint, rgba(120, 18, 196, 0.1));
+  color: var(--violet);
+}
+
+.svc-icon {
+  width: 26px;
+  height: 26px;
 }
 
 .links__body {
@@ -130,11 +121,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  min-width: 0;
 }
 
 .links__title {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.2rem;
   color: var(--ink);
   transition: color var(--dur-fast);
@@ -143,23 +135,46 @@
 .links__desc {
   color: var(--ink-mute);
   font-size: var(--text-sm);
+  line-height: 1.8;
 }
 
-.links__arrow {
-  width: 22px;
-  height: 22px;
-  color: var(--ink-faint);
+/* unified per-service CTA */
+.links__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   flex-shrink: 0;
-  transition:
-    transform var(--dur-fast) var(--ease-out),
-    color var(--dur-fast);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--ink-faint);
+  transition: color var(--dur-fast);
+}
+
+.links__cta svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 
 .links__a:hover .links__title {
   color: var(--violet);
 }
 
-.links__a:hover .links__arrow {
-  transform: translateX(-5px);
+.links__a:hover .links__cta {
   color: var(--violet);
+}
+
+.links__a:hover .links__cta svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 700px) {
+  .links__a {
+    flex-wrap: wrap;
+  }
+
+  .links__cta {
+    order: 3;
+    margin-inline-start: calc(52px + 1.4rem);
+  }
 }

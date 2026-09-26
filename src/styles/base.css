@@ -184,13 +184,13 @@ ol {
   -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
-/* ---- marquee (shared) ---- */
-@keyframes marquee-rtl {
+/* ---- marquee (shared, LTR: travels left) ---- */
+@keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(50%);
+    transform: translateX(-50%);
   }
 }
 
@@ -203,7 +203,7 @@ ol {
 .ticker__row {
   display: flex;
   width: max-content;
-  animation: marquee-rtl var(--ticker-dur, 26s) linear infinite;
+  animation: marquee var(--ticker-dur, 26s) linear infinite;
 }
 
 .ticker__seq {

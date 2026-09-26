@@ -7,7 +7,7 @@ export default function Verified({ size = 15 }) {
       width={size}
       height={size}
       role="img"
-      aria-label="حساب موثّق"
+      aria-label="Verified account"
     >
       <circle cx="12" cy="12" r="11" fill="#4f7fff" />
       <path

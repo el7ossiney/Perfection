@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP } from "../lib/gsap.js";
-import { processSteps } from "../data/content.js";
+import { gsap, ScrollTrigger, useGSAP, scrollToId } from "../lib/gsap.js";
+import { processSection, processSteps } from "../data/content.js";
 import SectionHead from "./SectionHead.jsx";
 
 /**
- * PROCESS — quiet on purpose. Four typographic steps beside a
- * hairline that draws with scroll; steps light up as passed.
+ * HOW WE WORK — four typographic steps beside a scroll-drawn
+ * line, closed by the section CTA.
  */
 export default function Process() {
   const ref = useRef(null);
@@ -48,20 +48,36 @@ export default function Process() {
     { scope: ref }
   );
 
+  const go = (e) => {
+    e.preventDefault();
+    scrollToId(processSection.cta.href);
+  };
+
   return (
     <section className="proc section" id="process" ref={ref}>
       <div className="container">
-        <SectionHead eyebrow="طريقتنا" title="من الفكرة للأثر، بأربع خطوات." />
+        <SectionHead
+          eyebrow={processSection.eyebrow}
+          title={processSection.title}
+          lead={processSection.lead}
+        />
         <div className="proc__steps">
           <span className="proc__line" aria-hidden="true" />
-          {processSteps.map((s) => (
-            <div className="proc__step" key={s.num}>
-              <span className="proc__num">{s.num}</span>
+          {processSteps.map((s, i) => (
+            <div className="proc__step" key={s.title}>
+              <span className="proc__num">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="proc__title">{s.title}</h3>
               <p className="proc__desc">{s.desc}</p>
             </div>
           ))}
         </div>
+        <a
+          className="btn btn--violet proc__cta will-reveal"
+          href={processSection.cta.href}
+          onClick={go}
+        >
+          {processSection.cta.label}
+        </a>
       </div>
     </section>
   );

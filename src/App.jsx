@@ -4,10 +4,8 @@ import { Grain } from "./components/Chrome.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import Services from "./components/Services.jsx";
-import CaseStudies from "./components/CaseStudies.jsx";
 import Process from "./components/Process.jsx";
-import Network from "./components/Network.jsx";
-import Testimonials from "./components/Testimonials.jsx";
+import Brands from "./components/Brands.jsx";
 import CTA from "./components/CTA.jsx";
 import Footer from "./components/Footer.jsx";
 
@@ -36,7 +34,7 @@ export default function App() {
         });
       });
 
-      // Noto Kufi swaps in after first paint and shifts every trigger.
+      // Clash Display swaps in after first paint and shifts triggers.
       if (document.fonts?.ready) {
         document.fonts.ready.then(() => ScrollTrigger.refresh());
       }
@@ -53,10 +51,8 @@ export default function App() {
       <main>
         <Hero />
         <Services />
-        <CaseStudies />
         <Process />
-        <Network />
-        <Testimonials />
+        <Brands />
         <CTA />
       </main>
       <Footer />

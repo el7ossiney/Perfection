@@ -1,5 +1,5 @@
 /* ==========================================================
-   برفكشن — style manifest (imports resolve at build time)
+   Perfection — style manifest (imports resolve at build time)
    ========================================================== */
 
 @import "./tokens.css";
@@ -8,9 +8,7 @@
 @import "./sections/navbar.css";
 @import "./sections/hero.css";
 @import "./sections/services.css";
-@import "./sections/work.css";
 @import "./sections/process.css";
-@import "./sections/network.css";
-@import "./sections/testimonials.css";
+@import "./sections/brands.css";
 @import "./sections/cta.css";
 @import "./sections/footer.css";

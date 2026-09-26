@@ -24,7 +24,7 @@ export default function Navbar() {
     <header className={`nav ${scrolled || open ? "nav--scrolled" : ""}`}>
       <div className="nav__inner container">
         <Logo />
-        <nav className="nav__links" aria-label="التنقل الرئيسي">
+        <nav className="nav__links" aria-label="Main navigation">
           {nav.map((l) => (
             <a key={l.href} href={l.href} onClick={(e) => go(e, l.href)}>
               {l.label}
@@ -41,7 +41,7 @@ export default function Navbar() {
         <button
           className={`nav__burger ${open ? "is-open" : ""}`}
           aria-expanded={open}
-          aria-label={open ? "أغلق القائمة" : "افتح القائمة"}
+          aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
           <span />
@@ -50,7 +50,7 @@ export default function Navbar() {
       </div>
 
       <div className={`nav__drawer ${open ? "is-open" : ""}`}>
-        <nav className="nav__drawer-links container" aria-label="قائمة الجوال">
+        <nav className="nav__drawer-links container" aria-label="Mobile menu">
           {[...nav, navCta].map((l) => (
             <a key={l.href} href={l.href} onClick={(e) => go(e, l.href)}>
               {l.label}
