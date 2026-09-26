@@ -21,13 +21,7 @@
   background-size: 72px 72px, 72px 72px, auto, auto;
 }
 
-/* Asymmetric hero: copy left, glass index card right */
-.hero-split {
-  display: grid;
-  grid-template-columns: 1.3fr .85fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
-}
+/* hero-split base lives in hero.css (cascade order) */
 
 .hero-copy h1 {
   font-size: clamp(2.5rem, 5.8vw, 4.3rem);
