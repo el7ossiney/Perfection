@@ -1,0 +1,56 @@
+/* ============================================================
+   BRANDS THAT TRUST PERFECTION — uniform white logo slider
+   ============================================================ */
+.clients {
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  background: var(--navy-950);
+}
+
+.logo-slider {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.logo-track {
+  display: flex;
+  gap: 1.1rem;
+  width: max-content;
+  padding-inline: .55rem;
+  animation: slider 32s linear infinite;
+}
+
+.logo-track:hover { animation-play-state: paused; }
+
+@keyframes slider {
+  to { transform: translateX(-50%); }
+}
+
+/* Uniform cards: equal size, white background, consistent spacing */
+.logo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  width: 188px;
+  height: 76px;
+  flex: none;
+  background: var(--white);
+  border-radius: 14px;
+  color: #232A3D;
+}
+
+.logo-card svg {
+  width: 26px;
+  height: 26px;
+  opacity: .8;
+}
+
+.logo-card span {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  opacity: .75;
+}
+

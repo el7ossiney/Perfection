@@ -1,64 +1,75 @@
-import { useRef } from "react";
+import { Fragment } from "react";
+import { useLocation } from "react-router-dom";
+import IndexCard from "../components/IndexCard.jsx";
+import Rail from "../components/Rail.jsx";
+import SvcRow from "../components/SvcRow.jsx";
+import Ready from "../components/Ready.jsx";
+import { useLink } from "../lib/navigation.js";
 import { servicesPage, services } from "../data/content.js";
-import { usePageReveal } from "../lib/gsap.js";
-import { useGo } from "../lib/navigation.js";
-import PageHero from "../components/PageHero.jsx";
-import ServiceIcon from "../components/ServiceIcon.jsx";
 
-/**
- * SERVICES PAGE — every service as an anchored detail block
- * (home cards link here with #slug), each closing on Contact Us.
- */
+/** WHAT WE DO — hero split, marquee, sticky rail + 8 editorial rows. */
 export default function ServicesPage() {
-  const ref = useRef(null);
-  usePageReveal(ref);
-  const go = useGo();
+  const link = useLink();
+  const { pathname } = useLocation();
 
   return (
-    <div ref={ref}>
-      <PageHero eyebrow={servicesPage.eyebrow} title={servicesPage.title} lead={servicesPage.lead} />
+    <>
+      <section className="page-hero svc-hero">
+        <div className="container svc-hero-grid">
+          <div className="svc-hero-copy">
+            <p className="kicker chip glass">{servicesPage.chip}</p>
+            <h1>
+              {servicesPage.titleTop}
+              <br />
+              <span className="grad-text">{servicesPage.titleGrad}</span>
+            </h1>
+            <p className="hero-sub">{servicesPage.sub}</p>
+            <div className="hero-actions">
+              <a className="btn btn-primary" {...link("/contact")}>
+                {servicesPage.ctaLabel}
+              </a>
+            </div>
+          </div>
 
-      <section className="spage section">
-        <div className="container">
-          <div className="spage__list">
+          <IndexCard {...servicesPage.card} />
+        </div>
+      </section>
+
+      {/* Decorative duplicate track — kept out of tab order */}
+      <div className="svc-marquee" aria-hidden="true">
+        <div className="svc-marquee-track">
+          {[...servicesPage.marquee, ...servicesPage.marquee].map((item, i) => (
+            <Fragment key={i}>
+              <a tabIndex={-1} {...link(pathname, `#${item.anchor}`)}>
+                {item.label}
+              </a>
+              <i className="dot" />
+            </Fragment>
+          ))}
+        </div>
+      </div>
+
+      <section className="svc-section">
+        <div className="container svc-split">
+          <Rail rail={servicesPage.rail} />
+
+          <div className="svc-list">
             {services.map((s, i) => (
-              <article
-                className="spage__row will-reveal"
-                id={s.slug}
-                key={s.slug}
-                style={{ "--i": i % 2 }}
-              >
-                <span className="spage__icon">
-                  <ServiceIcon name={s.icon} />
-                </span>
-                <div className="spage__body">
-                  <h2 className="spage__title">{s.title}</h2>
-                  <p className="spage__desc">{s.desc}</p>
-                  <button
-                    className="spage__cta"
-                    onClick={() => go("/contact")}
-                  >
-                    Contact Us
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M5 12h14m0 0l-6-6m6 6l-6 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <span className="spage__index" aria-hidden="true">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </article>
+              <SvcRow
+                key={s.anchor}
+                id={s.anchor}
+                n={String(i + 1).padStart(2, "0")}
+                icon={s.icon}
+                title={s.title}
+                desc={s.desc}
+                ctaLabel={servicesPage.rowCtaLabel}
+              />
             ))}
           </div>
         </div>
       </section>
-    </div>
+
+      <Ready />
+    </>
   );
 }

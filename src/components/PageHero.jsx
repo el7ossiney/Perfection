@@ -1,17 +1,36 @@
-import { servicesPage } from "../data/content.js";
+import CropMarks from "./CropMarks.jsx";
+import IndexCard from "./IndexCard.jsx";
+import { useLink } from "../lib/navigation.js";
 
-/**
- * Shared inner-page hero: the brand gradient with the guideline's
- * hairline frame + crop marks, page eyebrow/title/lead.
- */
-export default function PageHero({ eyebrow, title, lead }) {
+/** Inner-page hero — blueprint gradient in a framed container. */
+export default function PageHero({ chip, titleTop, titleGrad, sub, ctaLabel, card }) {
+  const link = useLink();
+
   return (
-    <section className="pagehero">
-      <span className="pagehero__frame" aria-hidden="true" />
-      <div className="pagehero__inner container">
-        <p className="eyebrow eyebrow--light">{eyebrow ?? servicesPage.eyebrow}</p>
-        <h1 className="pagehero__title">{title}</h1>
-        {lead && <p className="pagehero__lead">{lead}</p>}
+    <section className="page-hero bp">
+      <div className="container page-hero-inner frame">
+        <CropMarks />
+
+        <div className="hero-split">
+          <div className="hero-copy">
+            <p className="kicker chip glass">{chip}</p>
+            <h1>
+              {titleTop}
+              <br />
+              <span className="grad-text">{titleGrad}</span>
+            </h1>
+            <p className="hero-sub">{sub}</p>
+            {ctaLabel && (
+              <div className="hero-actions">
+                <a className="btn btn-primary" {...link("/contact")}>
+                  {ctaLabel}
+                </a>
+              </div>
+            )}
+          </div>
+
+          <IndexCard {...card} />
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,72 @@
+/* ============================================================
+   FOOTER — violet-deep
+   ============================================================ */
+.site-footer {
+  background:
+    radial-gradient(60% 80% at 50% 120%, rgba(109, 40, 217, .28), transparent 70%),
+    #120A2E;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  padding: clamp(3.5rem, 7vw, 5rem) 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding-bottom: 2.8rem;
+}
+
+.footer-brand p {
+  margin-top: 1.2rem;
+  max-width: 34ch;
+  color: var(--txt-mid);
+  font-size: .95rem;
+}
+
+.footer-nav { display: grid; gap: .7rem; font-size: .95rem; }
+
+.footer-nav a {
+  color: var(--txt-mid);
+  transition: color .2s ease, translate .2s ease;
+}
+.footer-nav a:hover { color: var(--cyan-300); translate: 4px 0; }
+
+.footer-social p {
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--txt-mid);
+  margin-bottom: 1rem;
+}
+
+.social-icons { display: flex; gap: .7rem; }
+
+.social-icons a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .04);
+  color: var(--txt-mid);
+  transition: color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.social-icons a:hover {
+  color: var(--cyan-300);
+  border-color: rgba(103, 232, 249, .45);
+  transform: translateY(-3px);
+}
+
+.social-icons svg { width: 19px; height: 19px; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, .07);
+  padding: 1.4rem 0;
+}
+
+.footer-bottom small { color: rgba(169, 178, 208, .6); }
+

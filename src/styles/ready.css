@@ -1,0 +1,33 @@
+/* ============================================================
+   READY TO GROW — framed gradient band, button on the right
+   ============================================================ */
+.ready {
+  padding: 0 0 clamp(5rem, 9vw, 7rem);
+  background: var(--navy-950);
+}
+
+.ready-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(2.2rem, 5vw, 3.8rem) clamp(2rem, 6vw, 4.5rem);
+  background:
+    radial-gradient(60% 90% at 85% 20%, rgba(139, 92, 246, .35), transparent 70%),
+    linear-gradient(135deg, #17255E 0%, #1B1445 55%, #0D1B33 100%);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--radius-lg);
+}
+
+.ready-copy h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  margin-bottom: .5rem;
+}
+
+.ready-copy p {
+  color: var(--txt-mid);
+  max-width: 46ch;
+}
+
+.ready .frame::after { border-radius: var(--radius-lg); }
+

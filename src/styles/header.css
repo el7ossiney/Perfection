@@ -1,0 +1,97 @@
+/* ============================================================
+   HEADER — logo floats transparent over the gradient (no white box)
+   ============================================================ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: var(--header-h);
+  border-bottom: 1px solid rgba(255, 255, 255, .09);
+}
+
+/*
+  NOTE: the glass blur lives on a ::before layer, NOT on the header itself —
+  backdrop-filter on an ancestor becomes the containing block for fixed
+  children, which trapped the mobile drawer inside the 68px header bar.
+*/
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 11, 22, .55);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  z-index: -1;
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+.brand-mark { flex: none; }
+
+.brand-word {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: .01em;
+  color: var(--txt-hi);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+  font-size: .93rem;
+  font-weight: 500;
+}
+
+.site-nav a:not(.nav-cta) {
+  color: var(--txt-mid);
+  transition: color .2s ease;
+}
+.site-nav a:not(.nav-cta):hover { color: var(--txt-hi); }
+
+.nav-cta {
+  padding: .6em 1.5em;
+  border-radius: 999px;
+  background: var(--grad-brand);
+  color: #fff;
+  font-weight: 700;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  border-radius: 10px;
+}
+.burger span {
+  height: 2px;
+  width: 100%;
+  background: var(--txt-hi);
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+.burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.is-open span:nth-child(2) { opacity: 0; }
+.burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+

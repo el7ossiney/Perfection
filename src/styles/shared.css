@@ -1,0 +1,84 @@
+/* ============================================================
+   SHARED EDITORIAL SYSTEM — blueprint heroes, splits, framed cards
+   ============================================================ */
+
+/* Blueprint-grid variant of the 45° gradient heroes */
+.hero.bp {
+  background:
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
+    radial-gradient(55% 45% at 88% -8%, rgba(139, 92, 246, .3), transparent 70%),
+    linear-gradient(135deg, #17255E 0%, #1B1445 42%, var(--navy-950) 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto;
+}
+
+.page-hero.bp {
+  background:
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
+    radial-gradient(55% 45% at 88% -8%, rgba(139, 92, 246, .3), transparent 70%),
+    linear-gradient(135deg, #17255E 0%, #1B1445 42%, var(--navy-950) 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto;
+}
+
+/* Asymmetric hero: copy left, glass index card right */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.3fr .85fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.5rem, 5.8vw, 4.3rem);
+  line-height: 1.06;
+  margin: 1.3rem 0 1.1rem;
+  max-width: 15ch;
+}
+
+.hero-copy .hero-sub { margin-inline: 0; text-align: left; max-width: 52ch; }
+.hero-copy .hero-actions { justify-content: flex-start; }
+
+/* Editorial rows without icon tile (used for lists like Brand Voice) */
+.svc-row.no-tile { grid-template-columns: auto 1fr; }
+.svc-row.no-tile .svc-arrow,
+.svc-row.no-tile .svc-tile { display: none; }
+
+.svc-row.no-tile .svc-content p { max-width: 70ch; }
+
+/* Framed Vision/Mission cards (crop marks on glass) */
+.vm-card.frame::after { border-radius: 12px; }
+
+/* Steps get anchor targets */
+.step { scroll-margin-top: calc(var(--header-h) + 24px); }
+
+/* Contact info cards framed */
+.ci-card.frame::after { border-radius: 12px; }
+
+/* Generic index-card reuse on any hero */
+.hero .svc-index-card,
+.page-hero .svc-index-card { background: rgba(11, 18, 36, .5); }
+
+/* Facts block inside index cards (contact hero) */
+.sic-facts {
+  display: grid;
+  gap: .8rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.sic-facts li {
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+}
+
+.sic-facts b { font-weight: 600; font-size: .92rem; }
+
+.ci-note {
+  margin-top: 1rem;
+  font-size: .85rem;
+  color: var(--txt-mid);
+}
+

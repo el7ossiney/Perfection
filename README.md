@@ -1,49 +1,49 @@
 # Perfection — Front (React + Vite)
 
-واجهة موقع وكالة **برفكشن** للتسويق بالمؤثرين — عربية RTL بأسلوب
-Editorial Index مستوحى من مواقع حاصلة على جوائز عالمية.
+React implementation of the **Perfection** marketing-agency website.
+Design source of truth: the static multi-page mockup in [`../ui/`](../ui/)
+(`index / about / services / process / contact` + `styles.css`) — the React
+app reproduces that markup and stylesheet 1:1.
 
-## التشغيل
+## Run
 
 ```bash
 npm install
 npm run dev      # http://localhost:5173
-npm run build    # إنتاج → dist/
+npm run build    # production → dist/
+npm run preview  # serve dist/
 ```
 
-## نظام التصميم
+## Routes (HashRouter)
 
-| العنصر | القيمة |
+| Path | Page |
 |---|---|
-| البنفسجي الأساسي | `#7812C4` (Rich Violet) |
-| الكحلي الغامق | `#1E0D64` / `#12083F` (خلفيات داكنة) |
-| الأزرق | `#4F7FFF` / `#0042FC` |
-| السماوي | `#00BBCE` (Vibrant Cyan) |
-| التدرج الرئيسي | بنفسجي → أزرق → سماوي بزاوية 45° |
-| خط اللاتيني/العناوين | Clash Display (Fontshare) |
-| خط العربية | IBM Plex Sans Arabic (بديل Proxima Nova Arabic) |
+| `/` | Home — hero, Who We Are, 8 services, process, clients, CTA |
+| `/about` | Who We Are — agency profile, Vision & Mission, Brand Voice |
+| `/services` | What We Do — service index, marquee, editorial rows |
+| `/process` | How We Work — the four steps as editorial rows |
+| `/contact` | Contact form + follow/explore cards |
 
-## الأنماط المستخدمة (من بحث مواقع Awwwards)
+## Design system
 
-- تايبوغرافيا ضخمة ملسقة بأسفل الهيرو (bottom-anchored display)
-- Micro-labels بحروف كبيرة متباعدة في الحواف
-- خدمات وأعمال كصفوف index بفواصل 1px (مش كروت)
-- Ticker strips بفواصل ✦
-- كرات صلصالية (3D clay) بتدرجات الهوية + glassmorphism
-- Grain overlay + custom cursor
-- Line-mask reveals للعناوين
+Defined once in `src/styles.css` (copied from `ui/styles.css`):
 
-## البنية
+- 45° gradients — violet→navy heroes, cyan process band (blue→cyan)
+- Glass cards, hairline frames with crop marks (`.glass`, `.frame`, `.cm`)
+- Clash Display headings + Satoshi body via Fontshare
+- CSS-only logo marquee + scroll-driven reveals (no JS animation libs)
+- Colors: Navy `#070B16`, Violet `#7C3AED`, Cyan `#22D3EE`
+
+## Structure
 
 ```
 src/
-  components/   مكوّنات الأقسام (Hero, Services, CaseStudies, ...)
-  hooks/        useReveal (scroll reveals) / useCounter (عدادات)
-  styles/       tokens.css (متغيرات) / global.css / site.css
+  components/   Header, Footer, Hero, PageHero, IndexCard, Rail, SvcRow, …
+  pages/        Home, About, Services, Process, Contact
+  data/         content.js — all copy, verbatim from "Website Content.pdf"
+  lib/          navigation.js — HashRouter links, anchors, titles
+  styles.css    the whole design system (from ui/styles.css)
 ```
 
-## مراجع البحث
-
-انظر `../research/design-references.md` — تحليل 6 مواقع مرجعية
-(landonorris.com, basement.studio, exoape.com, igloo.inc, phantom.land,
-ubiquitousinfluence.com) مع لقطات في `../research/screenshots/`.
+Content edits go in `src/data/content.js`; visual edits in `src/styles.css`
+(and mirror them in `ui/styles.css` to keep the mockup in sync).

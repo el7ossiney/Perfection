@@ -1,0 +1,16 @@
+/* ============================================================
+   REACT PORT ADDITIONS
+   The ui markup references two button classes that had no rules
+   above — defined here with the system's own tokens.
+   ============================================================ */
+.btn-ghost {
+  background: rgba(255, 255, 255, .04);
+  border-color: rgba(255, 255, 255, .18);
+  color: var(--txt-hi);
+}
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(103, 232, 249, .45);
+}
+
+.btn-block { width: 100%; }

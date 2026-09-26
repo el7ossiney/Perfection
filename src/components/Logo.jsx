@@ -1,17 +1,13 @@
-import { useGo } from "../lib/navigation.js";
+import { useLink } from "../lib/navigation.js";
 
-/**
- * The logo — the vectorized official mark + wordmark.
- * Router-aware: always routes home.
- */
+/** Brand lockup — the real gradient logo chip + lowercase wordmark. */
 export default function Logo() {
-  const go = useGo();
+  const link = useLink();
+
   return (
-    <a href="#/" className="logo" aria-label="Perfection — home" onClick={(e) => { e.preventDefault(); go("/"); }}>
-      <img className="logo__mark" src="/logo-mark.svg" alt="" aria-hidden="true" />
-      <span className="logo__word" dir="ltr">
-        perfection
-      </span>
+    <a className="brand" aria-label="perfection — home" {...link("/")}>
+      <img className="brand-logo" src="/logo.png" alt="Perfection logo" />
+      <span className="brand-word">perfection</span>
     </a>
   );
 }

@@ -1,22 +1,19 @@
-import { useRef } from "react";
-import { usePageReveal } from "../lib/gsap.js";
 import Hero from "../components/Hero.jsx";
-import Services from "../components/Services.jsx";
+import WhoWeAre from "../components/WhoWeAre.jsx";
+import ServicesGrid from "../components/ServicesGrid.jsx";
 import Process from "../components/Process.jsx";
-import Brands from "../components/Brands.jsx";
-import CTA from "../components/CTA.jsx";
+import Clients from "../components/Clients.jsx";
+import Ready from "../components/Ready.jsx";
 
 export default function Home() {
-  const ref = useRef(null);
-  usePageReveal(ref);
-
   return (
-    <div ref={ref}>
+    <>
       <Hero />
-      <Services />
+      <WhoWeAre />
+      <ServicesGrid />
       <Process />
-      <Brands />
-      <CTA />
-    </div>
+      <Clients />
+      <Ready />
+    </>
   );
 }

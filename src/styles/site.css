@@ -1,15 +1,20 @@
 /* ==========================================================
-   Perfection — style manifest (imports resolve at build time)
+   Perfection — style manifest (imports resolve at build time).
+   Split from ui/styles.css — file order == cascade order,
+   don't reorder these lines.
    ========================================================== */
 
 @import "./tokens.css";
 @import "./base.css";
-@import "./sections/chrome.css";
-@import "./sections/navbar.css";
-@import "./sections/hero.css";
-@import "./sections/services.css";
-@import "./sections/process.css";
-@import "./sections/brands.css";
-@import "./sections/pages.css";
-@import "./sections/cta.css";
-@import "./sections/footer.css";
+@import "./header.css";
+@import "./hero.css";
+@import "./who-we-are.css";
+@import "./services.css";
+@import "./process.css";
+@import "./clients.css";
+@import "./ready.css";
+@import "./footer.css";
+@import "./responsive.css";
+@import "./pages.css";
+@import "./shared.css";
+@import "./react-port.css";

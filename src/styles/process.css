@@ -1,0 +1,56 @@
+/* ============================================================
+   HOW WE WORK — 45° blue→cyan gradient
+   ============================================================ */
+.cyan-gradient {
+  color: var(--txt-hi);
+  background:
+    radial-gradient(50% 40% at 8% -10%, rgba(34, 211, 238, .2), transparent 70%),
+    linear-gradient(135deg, #0A2E3F 0%, #0C1C33 48%, var(--navy-950) 100%);
+}
+
+.process { padding: clamp(5rem, 10vw, 8rem) 0; }
+
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.1rem;
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 34px;
+  inset-inline: 8%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(103, 232, 249, .5), rgba(139, 92, 246, .5), transparent);
+}
+
+.step {
+  position: relative;
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+}
+
+.step-no {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 1.2rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--cyan-300);
+  background: var(--navy-950);
+  border: 1px solid rgba(103, 232, 249, .4);
+  border-radius: 50%;
+}
+
+.step h3 { font-size: 1.1rem; margin-bottom: .5rem; }
+.step p { font-size: .9rem; color: var(--txt-mid); }
+
+.process-cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
