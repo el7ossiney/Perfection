@@ -1,61 +1,37 @@
-import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP } from "./lib/gsap.js";
+import { HashRouter, Routes, Route, Outlet } from "react-router-dom";
 import { Grain } from "./components/Chrome.jsx";
 import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import Services from "./components/Services.jsx";
-import Process from "./components/Process.jsx";
-import Brands from "./components/Brands.jsx";
-import CTA from "./components/CTA.jsx";
 import Footer from "./components/Footer.jsx";
+import Home from "./pages/Home.jsx";
+import ServicesPage from "./pages/Services.jsx";
+import Contact from "./pages/Contact.jsx";
+import { ScrollManager } from "./lib/navigation.js";
 
-export default function App() {
-  const rootRef = useRef(null);
-
-  useGSAP(
-    () => {
-      // Global batch reveal — initial hidden state is set from JS
-      // only, so no-JS and reduced-motion always see full content.
-      const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.set(".will-reveal", { opacity: 0, y: 28 });
-        ScrollTrigger.batch(".will-reveal", {
-          start: "top 88%",
-          once: true,
-          onEnter: (batch) =>
-            gsap.to(batch, {
-              opacity: 1,
-              y: 0,
-              duration: 0.9,
-              ease: "power3.out",
-              stagger: 0.08,
-              overwrite: true,
-            }),
-        });
-      });
-
-      // Clash Display swaps in after first paint and shifts triggers.
-      if (document.fonts?.ready) {
-        document.fonts.ready.then(() => ScrollTrigger.refresh());
-      }
-
-      return () => mm.revert();
-    },
-    { scope: rootRef }
-  );
-
+function Layout() {
   return (
-    <div ref={rootRef}>
+    <>
       <Grain />
+      <ScrollManager />
       <Navbar />
       <main>
-        <Hero />
-        <Services />
-        <Process />
-        <Brands />
-        <CTA />
+        <Outlet />
       </main>
       <Footer />
-    </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 }

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Logo from "./Logo.jsx";
 import { nav, navCta } from "../data/content.js";
-import { scrollToId } from "../lib/gsap.js";
+import { useGo } from "../lib/navigation.js";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const go = useGo();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -14,10 +15,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const go = (e, href) => {
+  const handle = (to, hash) => (e) => {
     e.preventDefault();
     setOpen(false);
-    scrollToId(href);
+    go(to, hash);
   };
 
   return (
@@ -26,15 +27,15 @@ export default function Navbar() {
         <Logo />
         <nav className="nav__links" aria-label="Main navigation">
           {nav.map((l) => (
-            <a key={l.href} href={l.href} onClick={(e) => go(e, l.href)}>
+            <a key={l.label} href={l.hash ?? l.to} onClick={handle(l.to, l.hash)}>
               {l.label}
             </a>
           ))}
         </nav>
         <a
           className="btn btn--glass nav__cta"
-          href={navCta.href}
-          onClick={(e) => go(e, navCta.href)}
+          href="#/contact"
+          onClick={handle(navCta.to)}
         >
           {navCta.label}
         </a>
@@ -52,7 +53,7 @@ export default function Navbar() {
       <div className={`nav__drawer ${open ? "is-open" : ""}`}>
         <nav className="nav__drawer-links container" aria-label="Mobile menu">
           {[...nav, navCta].map((l) => (
-            <a key={l.href} href={l.href} onClick={(e) => go(e, l.href)}>
+            <a key={l.label} href={l.hash ?? l.to} onClick={handle(l.to, l.hash)}>
               {l.label}
             </a>
           ))}

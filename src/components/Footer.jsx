@@ -1,4 +1,5 @@
-import { footer, site } from "../data/content.js";
+import { footer, site, services } from "../data/content.js";
+import { useGo } from "../lib/navigation.js";
 import Logo from "./Logo.jsx";
 
 /** Minimal social glyphs — Instagram, LinkedIn, Facebook, TikTok, X. */
@@ -51,9 +52,21 @@ function SocialIcon({ name }) {
  * icons (official links pending via the company Linktree).
  */
 export default function Footer() {
+  const go = useGo();
   const cols = [
-    { title: footer.serviceCol.title, links: footer.serviceCol.links, href: "#services" },
-    { title: footer.companyCol.title, links: footer.companyCol.links, href: "#top" },
+    {
+      title: footer.serviceCol.title,
+      links: services.map((s) => ({ label: s.title, to: "/services", hash: `#${s.slug}` })),
+    },
+    {
+      title: footer.companyCol.title,
+      links: [
+        { label: "About", to: "/" },
+        { label: "How We Work", to: "/", hash: "#process" },
+        { label: "Brands", to: "/", hash: "#brands" },
+        { label: "Contact", to: "/contact" },
+      ],
+    },
   ];
 
   return (
@@ -75,8 +88,16 @@ export default function Footer() {
               <h3 className="foot__col-title">{col.title}</h3>
               <ul>
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a href={col.href}>{l}</a>
+                  <li key={l.label}>
+                    <a
+                      href={`#${l.to}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        go(l.to, l.hash);
+                      }}
+                    >
+                      {l.label}
+                    </a>
                   </li>
                 ))}
               </ul>

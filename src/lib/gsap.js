@@ -27,4 +27,36 @@ export function scrollToId(hash) {
   });
 }
 
+/**
+ * Per-page batch reveal. App-level setup runs once at mount, so each
+ * page component calls this for its own .will-reveal elements.
+ */
+export function usePageReveal(ref) {
+  useGSAP(
+    () => {
+      if (!ref.current) return;
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const els = ref.current.querySelectorAll(".will-reveal");
+        gsap.set(els, { opacity: 0, y: 28 });
+        ScrollTrigger.batch(els, {
+          start: "top 88%",
+          once: true,
+          onEnter: (batch) =>
+            gsap.to(batch, {
+              opacity: 1,
+              y: 0,
+              duration: 0.9,
+              ease: "power3.out",
+              stagger: 0.08,
+              overwrite: true,
+            }),
+        });
+      });
+      return () => mm.revert();
+    },
+    { scope: ref }
+  );
+}
+
 export { gsap, ScrollTrigger, useGSAP };

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "../lib/gsap.js";
 import { hero } from "../data/content.js";
-import { scrollToId } from "../lib/gsap.js";
+import { useGo } from "../lib/navigation.js";
 import SplitWords from "./SplitWords.jsx";
 
 /**
@@ -26,9 +26,10 @@ export default function Hero() {
     { scope: ref }
   );
 
-  const go = (e, href) => {
+  const go = useGo();
+  const handle = (to) => (e) => {
     e.preventDefault();
-    scrollToId(href);
+    go(to);
   };
 
   return (
@@ -59,8 +60,8 @@ export default function Hero() {
           <p className="hero__sub">{hero.sub}</p>
           <a
             className="btn btn--glass hero__cta"
-            href={hero.cta.href}
-            onClick={(e) => go(e, hero.cta.href)}
+            href={`#${hero.cta.to}`}
+            onClick={handle(hero.cta.to)}
           >
             {hero.cta.label}
             <svg className="hero__cta-arrow" viewBox="0 0 24 24" aria-hidden="true">

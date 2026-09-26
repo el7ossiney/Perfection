@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP, scrollToId } from "../lib/gsap.js";
+import { gsap, ScrollTrigger, useGSAP } from "../lib/gsap.js";
+import { useGo } from "../lib/navigation.js";
 import { processSection, processSteps } from "../data/content.js";
 import SectionHead from "./SectionHead.jsx";
 
@@ -48,9 +49,10 @@ export default function Process() {
     { scope: ref }
   );
 
-  const go = (e) => {
+  const go = useGo();
+  const handle = (to) => (e) => {
     e.preventDefault();
-    scrollToId(processSection.cta.href);
+    go(to);
   };
 
   return (
@@ -73,8 +75,8 @@ export default function Process() {
         </div>
         <a
           className="btn btn--violet proc__cta will-reveal"
-          href={processSection.cta.href}
-          onClick={go}
+          href={`#${processSection.cta.to}`}
+          onClick={handle(processSection.cta.to)}
         >
           {processSection.cta.label}
         </a>
