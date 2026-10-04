@@ -60,5 +60,5 @@ cd Perfection && docker compose up -d --build
 ```
 
 Nginx Proxy Manager (attached to the same `proxy` network) forwards the
-domain to `http://perfection:80`. Host-side debug copy lives on
-`127.0.0.1:8080`.
+domain to `http://perfection:80` — container-name routing only, no ports
+published on the host.
