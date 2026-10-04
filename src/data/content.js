@@ -21,7 +21,7 @@ export const nav = [
   { label: "Who We Are", to: "/about" },
   { label: "What We Do", to: "/services" },
   { label: "How We Work", to: "/process" },
-  { label: "Clients", to: "/", hash: "#clients" },
+  { label: "Our Work", to: "/projects" },
 ];
 
 export const navCta = { label: "Contact Us", to: "/contact" };
@@ -306,6 +306,95 @@ export const processPage = {
     sub: "Every engagement follows the same clear path — so you always know where your brand stands and what comes next.",
     ctaLabel: growCta,
   },
+};
+
+/* ---------- PROJECTS PAGE (Our Work) ---------- */
+
+export const projectsPage = {
+  hero: {
+    chip: "Our Work",
+    titleTop: "Selected Projects,",
+    titleGrad: "Real Results.",
+    sub: "A look at the brands we’ve built, the campaigns we’ve run, and the growth we’ve delivered for our clients across Egypt and the GCC.",
+    card: {
+      label: "Work index",
+      title: "The Work",
+      items: [
+        { n: "01", label: "Clients", hash: "#clients" },
+        { n: "02", label: "Project archive", hash: "#projects" },
+      ],
+      facts: [
+        { label: "Coverage", value: site.coverage },
+        { label: "Focus", value: "Brand · Content · Performance" },
+      ],
+    },
+  },
+
+  grid: {
+    kicker: "Project Archive",
+    title: "What We’ve Shipped",
+    sub: "Every project below is a placeholder — swap the image, client, and copy in src/data/content.js.",
+  },
+
+  /* Images live in public/projects/ — 1200×800 (3:2) WebP, ≤200KB each. */
+  projects: [
+    {
+      id: "project-01",
+      img: "projects/project-01.svg",
+      client: "Client Name",
+      title: "Brand Identity & Launch Campaign",
+      blurb: "Full identity system, launch content, and paid media for a new brand entering the market.",
+      tags: ["Branding", "Content", "Paid Media"],
+      year: "2025",
+      details: {
+        challenge: "A new brand entering a crowded market with no identity, no audience, and a hard launch date.",
+        approach: "Positioning workshop, full identity system, launch content kit, and a paid media plan focused on the first 90 days.",
+        results: "Placeholder — add the real outcome numbers here once the case is ready (reach, leads, sales, growth %).",
+      },
+    },
+    {
+      id: "project-02",
+      img: "projects/project-02.svg",
+      client: "Client Name",
+      title: "Social Media & Content Program",
+      blurb: "Always-on social program — strategy, production, and community management.",
+      tags: ["Social", "Production"],
+      year: "2025",
+      details: {
+        challenge: "An inactive brand presence with inconsistent voice and no content engine.",
+        approach: "Always-on content calendar, monthly production days, and community management with clear response protocols.",
+        results: "Placeholder — add follower growth, engagement rate, and audience quality numbers here.",
+      },
+    },
+    {
+      id: "project-03",
+      img: "projects/project-03.svg",
+      client: "Client Name",
+      title: "Performance Marketing & CRO",
+      blurb: "Funnel build, creative testing, and landing-page optimization that cut acquisition cost.",
+      tags: ["Performance", "CRO"],
+      year: "2024",
+      details: {
+        challenge: "High acquisition cost and a funnel that leaked at every step.",
+        approach: "Full funnel rebuild, structured creative testing, and landing-page optimization tied to clear KPIs.",
+        results: "Placeholder — add CPA reduction, ROAS, and conversion lift numbers here.",
+      },
+    },
+    {
+      id: "project-04",
+      img: "projects/project-04.svg",
+      client: "Client Name",
+      title: "Campaign Concept & Activation",
+      blurb: "Big-idea campaign across digital and on-ground activations.",
+      tags: ["Campaign", "Activation"],
+      year: "2024",
+      details: {
+        challenge: "A brand that needed one big idea to reconnect with its audience beyond the feed.",
+        approach: "Campaign concept, key visual system, digital rollout, and on-ground activations in parallel.",
+        results: "Placeholder — add campaign reach, participation, and earned-media numbers here.",
+      },
+    },
+  ],
 };
 
 /* ---------- CONTACT PAGE ---------- */

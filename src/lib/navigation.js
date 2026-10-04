@@ -13,7 +13,7 @@ export function scrollToId(hash) {
 }
 
 /**
- * Cross-page + in-page navigation that works with HashRouter:
+ * Cross-page + in-page navigation (BrowserRouter + in-page anchors):
  *   const go = useGo();
  *   go("/services");            // page
  *   go("/", "#process");        // page + anchor
@@ -53,6 +53,7 @@ const PAGE_TITLES = {
   "/about": "Who We Are — Perfection",
   "/services": "What We Do — Perfection",
   "/process": "How We Work — Perfection",
+  "/projects": "Our Work — Perfection",
   "/contact": "Contact Us — Perfection",
 };
 

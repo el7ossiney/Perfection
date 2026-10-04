@@ -22,6 +22,8 @@ npm run preview  # serve dist/
 | `/about` | Who We Are — agency profile, Vision & Mission, Brand Voice |
 | `/services` | What We Do — service index, marquee, editorial rows |
 | `/process` | How We Work — the four steps as editorial rows |
+| `/projects` | Our Work — clients marquee + project archive grid |
+| `/projects/:id` | Case page — cover, facts aside, challenge/approach/results |
 | `/contact` | Contact form + follow/explore cards |
 
 ## Design system
@@ -47,6 +49,15 @@ src/
 
 Content edits go in `src/data/content.js`; visual edits in `src/styles/*`
 (and mirror them in `ui/styles.css` to keep the mockup in sync).
+
+### Adding a project
+
+1. Drop a `1200×800` (3:2) WebP — ≤200KB, important content centered — in
+   `public/projects/` (one image serves desktop and mobile; CSS crops).
+2. Add an entry to `projectsPage.projects` in `src/data/content.js`:
+   `id`, `img`, `client`, `title`, `blurb`, `tags`, `year`, `details`
+   (challenge / approach / results). The card links to `/projects/:id`
+   automatically.
 
 ## Deploying (Docker)
 
