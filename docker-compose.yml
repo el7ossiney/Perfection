@@ -1,0 +1,22 @@
+# Perfection front — static Vite build served by nginx.
+#
+# Joins the shared external `proxy` network so Nginx Proxy Manager
+# (running on the same host) can forward traffic to this container
+# by name: http://perfection:80
+#
+# One-time setup on the server (before `docker compose up -d`):
+#   docker network create proxy
+
+services:
+  perfection:
+    build: .
+    container_name: perfection
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80" # host-side debug/testing only
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
