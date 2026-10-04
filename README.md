@@ -48,17 +48,17 @@ src/
 Content edits go in `src/data/content.js`; visual edits in `src/styles/*`
 (and mirror them in `ui/styles.css` to keep the mockup in sync).
 
-## Deploying to GitHub Pages
+## Deploying (Docker)
 
-The GitHub repo (`el7ossiney/Perfection`) serves Pages from **master = the
-built site**, while the full source lives on the **`source`** branch.
+`master` holds the source; the site builds and serves via the multi-stage
+Dockerfile (node build → nginx serve) on any host with Docker.
 
 ```bash
-npm run build
-# copy dist/ contents to the repo root as a commit on master, e.g.:
-git worktree add ../deploy origin/master
-cd ../deploy && rm -rf $(ls -A | grep -v .git) && cp -r ../front/dist/. . \
-  && git add -A && git commit -m "Deploy: …" && git push origin HEAD:master
-cd ../front && git worktree remove ../deploy
-git push origin master:source   # keep the source branch up to date
+docker network create proxy   # once, shared with Nginx Proxy Manager
+git clone https://github.com/el7ossiney/Perfection.git
+cd Perfection && docker compose up -d --build
 ```
+
+Nginx Proxy Manager (attached to the same `proxy` network) forwards the
+domain to `http://perfection:80`. Host-side debug copy lives on
+`127.0.0.1:8080`.
