@@ -49,6 +49,9 @@ export default function ProjectShow() {
             <img
               src={`${import.meta.env.BASE_URL}${project.img}`}
               alt={`${project.title} — ${project.client}`}
+              decoding="async"
+              width={1200}
+              height={800}
             />
           </figure>
         </div>
@@ -60,12 +63,16 @@ export default function ProjectShow() {
           <div className="container">
             <div className="show-gallery">
               {project.gallery.map((g, i) => (
-                <figure key={g} className="show-slide glass frame reveal">
+                /* glass dropped on slides: 38 backdrop-filter blurs froze
+                   the page while images decoded — over a flat dark bg the
+                   blur was invisible anyway. Static tint in CSS instead. */
+                <figure key={g} className="show-slide frame reveal">
                   <CropMarks />
                   <img
                     src={`${import.meta.env.BASE_URL}${g}`}
                     alt={`${project.title} — page ${i + 1}`}
                     loading="lazy"
+                    decoding="async"
                   />
                 </figure>
               ))}

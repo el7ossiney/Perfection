@@ -17,6 +17,11 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  /* glass tint without the blur — cards sit on a flat dark section bg,
+     so backdrop-filter cost bought nothing while covers painted in */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-br);
+  border-radius: var(--radius);
   transition: transform .35s ease, border-color .35s ease;
 }
 
@@ -120,7 +125,17 @@
   gap: clamp(1.2rem, 2.5vw, 1.8rem);
 }
 
-.show-slide { overflow: hidden; }
+/* Slide = static glass tint, NO backdrop-filter (38 live blurs froze
+   the page during loading), and content-visibility so offscreen slides
+   in long galleries (34–38 pages) skip rendering entirely */
+.show-slide {
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-br);
+  border-radius: var(--radius);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
+}
 
 .show-slide img { display: block; width: 100%; }
 

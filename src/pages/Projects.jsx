@@ -42,7 +42,10 @@ export default function ProjectsPage() {
                   </header>
                   <div className="projects-grid">
                     {c.items.map((p) => (
-                      <article key={p.id} id={p.id} className="project-card glass frame reveal">
+                      /* glass dropped: 11 backdrop-blurs repainting while
+                         covers streamed in janked the page — the section bg
+                         is flat dark, the blur added nothing. Tint in CSS. */
+                      <article key={p.id} id={p.id} className="project-card frame reveal">
                         <CropMarks />
                         <a className="project-link" {...link(`/projects/${p.id}`)}>
                           <div className="project-media">
@@ -50,6 +53,9 @@ export default function ProjectsPage() {
                               src={`${import.meta.env.BASE_URL}${p.img}`}
                               alt={`${p.title} — ${p.client}`}
                               loading="lazy"
+                              decoding="async"
+                              width={1200}
+                              height={800}
                             />
                           </div>
                           <div className="project-body">
