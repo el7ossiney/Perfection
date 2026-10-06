@@ -33,6 +33,10 @@ export default function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          {/* Clean category URLs — the dropdown's two targets. /projects
+              stays as the full archive. */}
+          <Route path="/branding" element={<ProjectsPage cat="branding" />} />
+          <Route path="/social-media" element={<ProjectsPage cat="social" />} />
           <Route path="/projects/:id" element={<ProjectShow />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />

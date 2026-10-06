@@ -1,12 +1,31 @@
+import { useEffect } from "react";
 import PageHero from "../components/PageHero.jsx";
 import CropMarks from "../components/CropMarks.jsx";
 import SocialIcons from "../components/SocialIcons.jsx";
 import { useLink } from "../lib/navigation.js";
 import { contactPage, services } from "../data/content.js";
 
-/** CONTACT — framed glass form + follow/explore info cards. */
+/** CONTACT — framed glass form + follow/explore info cards + FAQ (AEO). */
 export default function Contact() {
   const link = useLink();
+
+  // FAQPage structured data — same answers users read on the page
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "faq-schema";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: contactPage.faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+    document.head.appendChild(script);
+    return () => script.remove();
+  }, []);
 
   return (
     <>
@@ -83,6 +102,25 @@ export default function Contact() {
               </div>
             </div>
           </aside>
+        </div>
+      </section>
+
+      {/* AEO — direct answers to the questions buyers actually ask */}
+      <section className="faq-section">
+        <div className="container">
+          <header className="section-head reveal">
+            <p className="kicker">FAQ</p>
+            <h2>Common Questions</h2>
+          </header>
+          <div className="faq-list reveal">
+            {contactPage.faq.map((f) => (
+              <details key={f.q} className="faq-item glass frame">
+                <CropMarks />
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
     </>

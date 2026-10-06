@@ -1,17 +1,21 @@
-import { useSearchParams } from "react-router-dom";
-import PageHero from "../components/PageHero.jsx";
+import { Navigate, useSearchParams } from "react-router-dom";
 import CropMarks from "../components/CropMarks.jsx";
 import Ready from "../components/Ready.jsx";
 import { projectsPage } from "../data/content.js";
 import { useLink } from "../lib/navigation.js";
 
 /** OUR WORK — the project archive grid, grouped by category.
- *  ?cat=branding|social shows a single category (nav dropdown targets these);
- *  no param shows every populated category. */
-export default function ProjectsPage() {
+ *  /branding and /social-media (cat prop) show one category — the nav
+ *  dropdown targets; no prop shows every populated category. Legacy
+ *  /projects?cat=… URLs redirect to the clean paths. */
+const CAT_PATHS = { branding: "/branding", social: "/social-media" };
+
+export default function ProjectsPage({ cat }) {
   const link = useLink();
   const [params] = useSearchParams();
-  const cat = params.get("cat");
+  const legacyCat = params.get("cat");
+
+  if (legacyCat) return <Navigate to={CAT_PATHS[legacyCat] ?? "/projects"} replace />;
 
   const sections = projectsPage.categories
     .map((c) => ({ ...c, items: projectsPage.projects.filter((p) => p.cat === c.key) }))
@@ -19,13 +23,14 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <PageHero {...projectsPage.hero} />
+      {/* No PageHero here — the archive is the page; straight into the work. */}
 
-      <section id="projects" className="projects-section">
+      <section id="projects" className="projects-section projects-direct">
         <div className="container">
           <header className="section-head reveal">
             <p className="kicker">{projectsPage.grid.kicker}</p>
-            <h2>{projectsPage.grid.title}</h2>
+            {/* h1 — the only page heading now the hero is gone */}
+            <h1>{projectsPage.grid.title}</h1>
             <p className="section-sub">{projectsPage.grid.sub}</p>
           </header>
 

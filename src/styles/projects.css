@@ -6,6 +6,10 @@
 
 .projects-section { padding: clamp(4rem, 8vw, 7rem) 0 clamp(5rem, 10vw, 8rem); }
 
+/* Without the PageHero, the section starts under the fixed header —
+   give it its own offset */
+.projects-direct { padding-top: calc(var(--header-h, 68px) + clamp(3rem, 6vw, 5rem)); }
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -125,6 +129,12 @@
   gap: clamp(1.2rem, 2.5vw, 1.8rem);
 }
 
+/* Social posts — denser Instagram-profile-style grid (posts are
+   square-ish 4:5, so three columns read like a profile, two on phones) */
+.show-gallery-social {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 /* Slide = static glass tint, NO backdrop-filter (38 live blurs froze
    the page during loading), and content-visibility so offscreen slides
    in long galleries (34–38 pages) skip rendering entirely */
@@ -195,6 +205,7 @@
   .show-split { grid-template-columns: 1fr; }
   .show-facts { position: static; }
   .show-gallery { grid-template-columns: 1fr; }
+  .show-gallery-social { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ---------- Mobile (≤640px): image-forward archive cards ----------

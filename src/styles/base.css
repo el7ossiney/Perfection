@@ -144,7 +144,8 @@ h1, h2, h3 {
   text-align: center;
 }
 
-.section-head h2 {
+.section-head h2,
+.section-head h1 {
   font-size: clamp(1.9rem, 4.2vw, 3rem);
   margin-bottom: 1rem;
 }

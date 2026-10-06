@@ -48,21 +48,91 @@ export function useLink() {
   });
 }
 
-const PAGE_TITLES = {
-  "/": "Perfection — Full-Service Marketing Agency",
-  "/about": "Who We Are — Perfection",
-  "/services": "What We Do — Perfection",
-  "/process": "How We Work — Perfection",
-  "/projects": "Our Work — Perfection",
-  "/contact": "Contact Us — Perfection",
+const PAGE_META = {
+  "/": {
+    title: "Perfection — Full-Service Marketing Agency",
+    description:
+      "Perfection is a full-service marketing agency helping brands across Egypt & the GCC grow through branding, social media, and performance marketing.",
+  },
+  "/about": {
+    title: "Who We Are — Perfection",
+    description:
+      "A full-service marketing agency built on vision, mission, and craft — the team behind the brands. Meet Perfection.",
+  },
+  "/services": {
+    title: "What We Do — Perfection",
+    description:
+      "Branding & identity, social media management, performance marketing, content production, SEO, and website design — services built for growth.",
+  },
+  "/process": {
+    title: "How We Work — Perfection",
+    description:
+      "Our four-step process: Discovery, Strategy, Execution, Optimization — from strategy to measurable growth for your brand.",
+  },
+  "/projects": {
+    title: "Our Work — Perfection",
+    description:
+      "Selected projects, real results — brand identities, guidelines, and social media campaigns we've shipped for clients across Egypt & the GCC.",
+  },
+  "/branding": {
+    title: "Branding & Identity Projects — Perfection",
+    description:
+      "Brand identities and guideline systems we've built — from wordmarks and color systems to full brand books. See the branding work.",
+  },
+  "/social-media": {
+    title: "Social Media Projects — Perfection",
+    description:
+      "Social media feeds and post systems we've designed — Instagram campaigns in each client's own brand identity. See the social work.",
+  },
+  "/contact": {
+    title: "Contact Us — Perfection",
+    description:
+      "Ready to grow your brand? Tell us about your goals — Egypt & the GCC. Let's create a strategy that drives real business growth.",
+  },
 };
 
-/** Per-route document title, scroll reset, and deferred anchor jumps. */
+const SITE_URL = "https://perfection-agency.com";
+
+/** Set (or create) a meta tag's content. */
+function setMeta(attr, key, content) {
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+/** Apply a page's title/description/canonical/OG/Twitter meta.
+ *  Used by ScrollManager for static routes and by ProjectShow for
+ *  per-project pages. */
+export function applyPageMeta(title, description, pathname) {
+  document.title = title;
+  setMeta("name", "description", description);
+  setMeta("property", "og:title", title);
+  setMeta("property", "og:description", description);
+  setMeta("property", "og:url", `${SITE_URL}${pathname}`);
+  setMeta("name", "twitter:title", title);
+  setMeta("name", "twitter:description", description);
+
+  let canonical = document.head.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    document.head.appendChild(canonical);
+  }
+  canonical.href = `${SITE_URL}${pathname}`;
+}
+
+/** Per-route title/description/canonical/OG, scroll reset, anchor jumps. */
 export function ScrollManager() {
   const { pathname, state } = useLocation();
 
   useEffect(() => {
-    document.title = PAGE_TITLES[pathname] ?? PAGE_TITLES["/"];
+    const meta = PAGE_META[pathname] ?? PAGE_META["/"];
+    applyPageMeta(meta.title, meta.description, pathname);
+
     const target = state?.scroll;
     if (target) {
       const t = setTimeout(() => scrollToId(target), 80);

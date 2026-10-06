@@ -26,8 +26,8 @@ export const nav = [
     to: "/projects",
     // Dropdown: the two archive categories (matches projectsPage.categories)
     children: [
-      { label: "Branding", to: "/projects?cat=branding" },
-      { label: "Social Media", to: "/projects?cat=social" },
+      { label: "Branding", to: "/branding" },
+      { label: "Social Media", to: "/social-media" },
     ],
   },
 ];
@@ -810,6 +810,54 @@ export const projectsPage = {
         results: "Case study coming soon.",
       },
     },
+
+    {
+      id: "ahmed-abdelraouf",
+      cat: "social",
+      img: "projects/ahmed-abdelraouf/cover.webp",
+      gallery: [
+        "projects/ahmed-abdelraouf/p01.webp",
+        "projects/ahmed-abdelraouf/p02.webp",
+        "projects/ahmed-abdelraouf/p03.webp",
+        "projects/ahmed-abdelraouf/p04.webp",
+        "projects/ahmed-abdelraouf/p05.webp",
+        "projects/ahmed-abdelraouf/p06.webp",
+      ],
+      client: "Dr. Ahmed Abdelraouf",
+      title: "Dr. Ahmed Abdelraouf — Social Media",
+      blurb: "Social media feed design — post series carrying the doctor's identity across Instagram.",
+      tags: ["Social Media"],
+      year: "2025",
+      details: {
+        challenge: "A practice that needed a consistent, trustworthy voice on social feed.",
+        approach: "A post system with clear hierarchy — readable Arabic type, calm medical palette, consistent templates.",
+        results: "Case study coming soon.",
+      },
+    },
+
+    {
+      id: "ats-okay",
+      cat: "social",
+      img: "projects/ats-okay/cover.webp",
+      gallery: [
+        "projects/ats-okay/p01.webp",
+        "projects/ats-okay/p02.webp",
+        "projects/ats-okay/p03.webp",
+        "projects/ats-okay/p04.webp",
+        "projects/ats-okay/p05.webp",
+        "projects/ats-okay/p06.webp",
+      ],
+      client: "Ats Okay",
+      title: "Ats Okay — Social Media",
+      blurb: "Social media feed design — post series in the brand's own identity.",
+      tags: ["Social Media"],
+      year: "2025",
+      details: {
+        challenge: "A brand that needed its feed to look like one designed series, not scattered posts.",
+        approach: "A templated post system built on the brand's colors and type, applied across the feed.",
+        results: "Case study coming soon.",
+      },
+    },
   ],
 };
 
@@ -841,4 +889,28 @@ export const contactPage = {
     title: "Not sure where to start?",
     text: "Explore our services or see how we work — then come back and tell us about your brand.",
   },
+
+  /* AEO: direct, quotable answers — mirrored as FAQPage structured data */
+  faq: [
+    {
+      q: "What services does Perfection offer?",
+      a: "We are a full-service marketing agency. Our services cover branding & identity, social media management, performance marketing, content creation & production, advertising management, SEO, media production & motion design, and website design.",
+    },
+    {
+      q: "Where does Perfection work?",
+      a: "We are based in Egypt and work with clients across Egypt and the GCC (Gulf Cooperation Council) countries, in English and Arabic.",
+    },
+    {
+      q: "How does a project with Perfection start?",
+      a: "Every project runs through the same four steps: Discovery (we learn your business and goals), Strategy (the plan and creative direction), Execution (we build and launch), and Optimization (we measure and improve). It starts with a short conversation through the contact form.",
+    },
+    {
+      q: "Can you handle both branding and social media?",
+      a: "Yes — that is what full-service means. We can build your brand identity from scratch and then run its social media, or take over an existing identity. See the difference in our work: the branding archive and the social media archive.",
+    },
+    {
+      q: "How do I get a quote?",
+      a: "Use the contact form — tell us your name, company, the service you are interested in, and a few lines about your project. We reply with next steps and a quote tailored to your goals.",
+    },
+  ],
 };
