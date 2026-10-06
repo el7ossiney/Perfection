@@ -181,3 +181,62 @@
   .show-facts { position: static; }
   .show-gallery { grid-template-columns: 1fr; }
 }
+
+/* ---------- Mobile (≤640px): image-forward archive cards ----------
+   Full archives stay stacked for equal discoverability (horizontal
+   scroll hides content — nngroup.com). The card collapses to its
+   cover: client + title ride on a bottom scrim, and the blurb/tags
+   live one tap away on the case-study page, keeping the archive
+   scannable. Desktop markup is untouched — this is CSS relocation. */
+@media (max-width: 640px) {
+  .projects-grid { gap: 1.15rem; }
+  .projects-cat + .projects-cat { margin-top: 2.2rem; }
+
+  /* Category label + hairline rule filling the rest of the row */
+  .projects-cat-head {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+  }
+  .projects-cat-head .kicker { margin-bottom: 0; }
+  .projects-cat-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+
+  /* Caption slides onto the image — card height = image height */
+  .project-media { border-bottom: 0; }
+
+  .project-body {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 2.6rem 1.1rem 1.05rem;
+    background: linear-gradient(180deg, rgba(7, 11, 22, 0), rgba(7, 11, 22, .92) 62%);
+  }
+
+  .project-blurb,
+  .project-tags { display: none; }
+
+  .project-client { color: var(--cyan-300); }
+
+  .project-body h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .65rem;
+    font-size: 1.18rem;
+  }
+
+  /* "Open case" affordance — masked arrow, no emoji-glyph risk */
+  .project-body h3::after {
+    content: "";
+    flex: none;
+    width: 17px;
+    height: 17px;
+    background: var(--cyan-300);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17 17 7M8 7h9v9'/></svg>") center / contain no-repeat;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17 17 7M8 7h9v9'/></svg>") center / contain no-repeat;
+  }
+}

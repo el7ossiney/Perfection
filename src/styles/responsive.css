@@ -56,6 +56,7 @@
     padding: .95rem 1.1rem;
     border-radius: 12px;
     font-size: 1.02rem;
+    text-align: right;
   }
   .site-nav a:not(.nav-cta):hover,
   .site-nav a:not(.nav-cta):focus-visible { background: rgba(255, 255, 255, .06); }
@@ -66,10 +67,21 @@
   }
   .site-nav a.is-active::after { display: none; }
 
-  /* Dropdown -> always-open indented sublist inside the drawer */
-  .nav-drop-link { justify-content: space-between; }
+  /* Dropdown -> compact, clearly-secondary sublist inside the drawer.
+     NOTE: rules must out-specify `.site-nav a:not(.nav-cta)` above, hence
+     the .site-nav prefix — equal specificity + later position also works,
+     but the prefix keeps it unambiguous. */
+  .site-nav .nav-drop-link {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+  }
 
-  .nav-drop-menu {
+  /* No dropdown affordance in the drawer — the sublist is always open */
+  .site-nav .nav-caret { display: none; }
+
+  .site-nav .nav-drop-menu {
     position: static;
     transform: none;
     opacity: 1;
@@ -79,13 +91,21 @@
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    padding: 0 0 .3rem .95rem;
     min-width: 0;
+    margin: .1rem 1.3rem .35rem 0;
+    padding: .15rem .8rem .35rem 0;
+    border-right: 1px solid rgba(255, 255, 255, .14);
+    /* Always open, never animates — tap/focus must not move it */
+    transition: none;
   }
 
-  .nav-drop-menu a { font-size: .95rem; }
+  .site-nav .nav-drop-menu a {
+    font-size: .93rem;
+    padding: .5rem .8rem;
+  }
 
   .nav-cta {
+    display: flex;
     justify-content: center;
     margin-top: auto;
     padding: .95em 1.5em;

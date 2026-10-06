@@ -25,12 +25,23 @@ export default function Header() {
     };
   }, []);
 
+  // Any link tap closes the drawer. Sub-urls share one pathname
+  // (/projects?cat=…), so the route-change effect above never fires
+  // when switching between them — the click itself must close.
+  const closeDrawerOnLink = (e) => {
+    if (e.target.closest("a")) setOpen(false);
+  };
+
   return (
     <header className="site-header">
       <div className="header-inner container">
         <Logo />
 
-        <nav className={`site-nav ${open ? "is-open" : ""}`} aria-label="Main navigation">
+        <nav
+          className={`site-nav ${open ? "is-open" : ""}`}
+          aria-label="Main navigation"
+          onClick={closeDrawerOnLink}
+        >
           {nav.map((l) =>
             l.children ? (
               <div key={l.label} className="nav-drop">

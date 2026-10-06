@@ -83,9 +83,6 @@
 
 .nav-caret { width: 10px; transition: transform .25s ease; }
 
-.nav-drop:hover .nav-caret,
-.nav-drop:focus-within .nav-caret { transform: rotate(180deg); }
-
 .nav-drop-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -107,11 +104,20 @@
   transition: opacity .22s ease, transform .22s ease, visibility .22s;
 }
 
-.nav-drop:hover .nav-drop-menu,
-.nav-drop:focus-within .nav-drop-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+/* Hover/focus open behavior — DESKTOP ONLY (min-width mirrors the
+   drawer breakpoint in responsive.css). These rules out-specify the
+   mobile drawer's static `transform: none`, which made the always-open
+   sublist jump sideways on tap. In the drawer the submenu never animates. */
+@media (min-width: 861px) {
+  .nav-drop:hover .nav-caret,
+  .nav-drop:focus-within .nav-caret { transform: rotate(180deg); }
+
+  .nav-drop:hover .nav-drop-menu,
+  .nav-drop:focus-within .nav-drop-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .nav-drop-menu a {
