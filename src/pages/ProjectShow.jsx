@@ -54,6 +54,26 @@ export default function ProjectShow() {
         </div>
       </section>
 
+      {/* The identity pages themselves — the real work, page by page */}
+      {project.gallery?.length ? (
+        <section className="show-gallery-wrap">
+          <div className="container">
+            <div className="show-gallery">
+              {project.gallery.map((g, i) => (
+                <figure key={g} className="show-slide glass frame reveal">
+                  <CropMarks />
+                  <img
+                    src={`${import.meta.env.BASE_URL}${g}`}
+                    alt={`${project.title} — page ${i + 1}`}
+                    loading="lazy"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="show-body">
         <div className="container show-split">
           <aside className="show-facts glass frame">

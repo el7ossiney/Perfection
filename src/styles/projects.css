@@ -1,5 +1,5 @@
 /* ==========================================================
-   Our Work (projects) page — clients marquee + archive grid.
+   Our Work (projects) page — archive grid + project detail.
    Image spec: 1200×800 (3:2) WebP, ≤200KB, content centered
    (object-fit: cover crops a little on odd ratios).
    ========================================================== */
@@ -110,6 +110,20 @@
 .show-cover { overflow: hidden; }
 .show-cover img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 
+/* Gallery — the project's own pages, natural ratio (guideline pages are
+   often portrait, so we don't force a ratio here) */
+.show-gallery-wrap { padding-bottom: clamp(2rem, 5vw, 3.5rem); }
+
+.show-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.show-slide { overflow: hidden; }
+
+.show-slide img { display: block; width: 100%; }
+
 .show-body { padding-bottom: clamp(4rem, 8vw, 7rem); }
 
 .show-split {
@@ -152,9 +166,18 @@
   color: var(--txt-mid, #9AA3C0);
 }
 
+/* ---------- Archive category split (Branding / Social Media) ---------- */
+
+.projects-cat + .projects-cat { margin-top: clamp(2.6rem, 6vw, 4.5rem); }
+
+.projects-cat-head { margin-bottom: clamp(1.2rem, 3vw, 2rem); }
+
+.projects-empty { max-width: 44ch; }
+
 @media (max-width: 980px) {
   .projects-grid { grid-template-columns: 1fr; }
   .project-body { padding: 1.15rem 1.05rem 1.25rem; }
   .show-split { grid-template-columns: 1fr; }
   .show-facts { position: static; }
+  .show-gallery { grid-template-columns: 1fr; }
 }

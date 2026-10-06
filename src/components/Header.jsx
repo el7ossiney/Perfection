@@ -31,15 +31,38 @@ export default function Header() {
         <Logo />
 
         <nav className={`site-nav ${open ? "is-open" : ""}`} aria-label="Main navigation">
-          {nav.map((l) => (
-            <a
-              key={l.label}
-              className={!l.hash && pathname === l.to ? "is-active" : undefined}
-              {...link(l.to, l.hash)}
-            >
-              {l.label}
-            </a>
-          ))}
+          {nav.map((l) =>
+            l.children ? (
+              <div key={l.label} className="nav-drop">
+                <a
+                  className={`nav-drop-link ${
+                    pathname === l.to || pathname.startsWith(l.to + "/") ? "is-active" : ""
+                  }`}
+                  {...link(l.to, l.hash)}
+                >
+                  {l.label}
+                  <svg className="nav-caret" viewBox="0 0 12 8" aria-hidden="true" fill="none">
+                    <path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+                <div className="nav-drop-menu">
+                  {l.children.map((c) => (
+                    <a key={c.label} {...link(c.to)}>
+                      {c.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                key={l.label}
+                className={!l.hash && pathname === l.to ? "is-active" : undefined}
+                {...link(l.to, l.hash)}
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <a
             className={`nav-cta ${pathname === navCta.to ? "is-active-cta" : ""}`}
             {...link(navCta.to)}

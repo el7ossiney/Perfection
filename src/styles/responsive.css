@@ -66,6 +66,25 @@
   }
   .site-nav a.is-active::after { display: none; }
 
+  /* Dropdown -> always-open indented sublist inside the drawer */
+  .nav-drop-link { justify-content: space-between; }
+
+  .nav-drop-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    padding: 0 0 .3rem .95rem;
+    min-width: 0;
+  }
+
+  .nav-drop-menu a { font-size: .95rem; }
+
   .nav-cta {
     justify-content: center;
     margin-top: auto;

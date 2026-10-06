@@ -70,6 +70,57 @@
   font-weight: 700;
 }
 
+/* "Our Work" dropdown — opens on hover/focus on desktop.
+   In the mobile drawer the menu turns into an always-open sublist
+   (see responsive.css). */
+.nav-drop { position: relative; }
+
+.nav-drop-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+}
+
+.nav-caret { width: 10px; transition: transform .25s ease; }
+
+.nav-drop:hover .nav-caret,
+.nav-drop:focus-within .nav-caret { transform: rotate(180deg); }
+
+.nav-drop-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 190px;
+  padding: .55rem;
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+  background: rgba(11, 18, 36, .92);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .22s ease, transform .22s ease, visibility .22s;
+}
+
+.nav-drop:hover .nav-drop-menu,
+.nav-drop:focus-within .nav-drop-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-drop-menu a {
+  padding: .6rem .8rem;
+  border-radius: 10px;
+  font-size: .93rem;
+  white-space: nowrap;
+}
+
 .burger {
   display: none;
   flex-direction: column;
